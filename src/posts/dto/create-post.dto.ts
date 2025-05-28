@@ -1,34 +1,34 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsString,
-  IsNotEmpty,
   IsArray,
   IsBoolean,
+  IsNotEmpty,
   IsOptional,
+  IsString,
 } from 'class-validator';
 
-export class CreateBlogDto {
-  @ApiProperty({ example: 'Título del blog' })
+export class CreatePostDto {
+  @ApiProperty({ example: 'Título del post' })
   @IsString()
   @IsNotEmpty()
   title: string;
 
-  @ApiProperty({ example: 'titulo-del-blog' })
+  @ApiProperty({ example: 'titulo-del-post' })
   @IsString()
   @IsNotEmpty()
   slug: string;
 
-  @ApiProperty({ example: 'Descripción breve del blog' })
+  @ApiProperty({ example: 'Descripción breve del post' })
   @IsString()
   @IsNotEmpty()
   description: string;
 
-  @ApiProperty({ example: 'Contenido completo del blog' })
+  @ApiProperty({ example: 'Contenido completo del post' })
   @IsString()
   @IsNotEmpty()
   content: string;
 
-  @ApiProperty({ example: ['nestjs', 'prisma', 'swagger'] })
+  @ApiProperty({ example: ['nestjs', 'prisma', 'backend'] })
   @IsArray()
   tags: string[];
 
