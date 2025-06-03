@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const isDev = process.env.NODE_ENV !== 'production';
 
   // 🔥 Swagger Config
   const config = new DocumentBuilder()
@@ -19,11 +20,9 @@ async function bootstrap() {
 
   // 🔥 Habilita CORS para permitir conexiones desde tu frontend
   app.enableCors({
-    origin: [
-      'https://francog.dev',
-      'https://www.francog.dev',
-      'http://localhost:4200',
-    ],
+    origin: isDev
+      ? ['http://localhost:4200', 'http://localhost:4000']
+      : ['https://francog.dev', 'https://www.francog.dev'],
   });
 
   // 🛡️ Pipes globales de validación
@@ -35,7 +34,7 @@ async function bootstrap() {
     }),
   );
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT ?? 3000;
   await app.listen(port);
 
   console.log(`🚀 Backend listo en: http://localhost:${port}`);
