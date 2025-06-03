@@ -23,6 +23,8 @@ async function bootstrap() {
     origin: isDev
       ? ['http://localhost:4200', 'http://localhost:4000']
       : ['https://francog.dev', 'https://www.francog.dev'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
   });
 
   // 🛡️ Pipes globales de validación
