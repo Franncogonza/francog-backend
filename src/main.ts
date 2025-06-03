@@ -35,8 +35,10 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000);
-  console.log(`🚀 Backend listo en: http://localhost:3000`);
-  console.log(`📚 Swagger disponible en: http://localhost:3000/api`);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+
+  console.log(`🚀 Backend listo en: http://localhost:${port}`);
+  console.log(`📚 Swagger disponible en: http://localhost:${port}/api`);
 }
 bootstrap();
